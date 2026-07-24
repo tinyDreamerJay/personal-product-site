@@ -151,10 +151,26 @@ function ProductsPage() {
           <div className="product-copy">
             <p className="product-kicker"><span>01</span> 业务管理系统 · PRIVATE</p><h2>SiYan</h2>
             <p className="product-lead">让商品、厂家、客户订单和扫码管理不再散落在不同工具里。</p>
-            <p className="product-description">SiYan 面向真实的本地经营场景，把商品档案、厂家关系、订单处理、账号权限与扫码操作组织成一条连续流程。固定价格暗码规则和订单文档生成，让日常操作可追踪、可复用。</p>
+            <p className="product-description">SiYan 面向商品贸易中的日常协作：同一件商品既有内部 SKU、客户货号和厂家货号，也关联图片、包装、材质、价格与厂家。系统把这些资料沉淀为可检索的商品档案，再继续服务扫码加单和两类订单交付。</p>
             <ul className="feature-list"><li><PackageCheck size={18} /><span><strong>商品与订单</strong>统一管理基础资料和流转状态</span></li><li><ScanLine size={18} /><span><strong>扫码工作流</strong>连接现场操作与系统记录</span></li><li><Boxes size={18} /><span><strong>价格暗码</strong>用固定映射保护并校验厂家价格</span></li></ul>
-            <div className="tech-line"><span>React</span><span>Vite</span><span>Node.js</span><span>RDS / JSON</span></div>
+            <div className="tech-line"><span>Vue 3</span><span>Express</span><span>MySQL / JSON</span><span>Excel / Word</span></div>
           </div><SiyanVisual />
+        </div>
+        <div className="page-shell product-deep-dive">
+          <div className="narrative-heading"><p className="eyebrow">一条订单怎样完成</p><h3>资料不是终点，<br />可交付的订单才是。</h3><p>SiYan 的核心不是把表格搬进网页，而是让商品资料在查询、下单和对外文档中持续复用，减少重复查找、抄写和格式整理。</p></div>
+          <div className="workflow" aria-label="SiYan 业务流程">
+            <article><span>01 · 建档</span><h4>统一商品身份</h4><p>维护 SKU、条码、客户与厂家货号、图片、包装和规格，同组商品还能通过关联键一起查看。</p></article>
+            <article><span>02 · 找货</span><h4>搜索或扫码定位</h4><p>按名称、货号、条码、厂家、材质等字段查询；扫码先精确匹配，只有唯一结果时才接受模糊匹配。</p></article>
+            <article><span>03 · 组单</span><h4>进入客户订单</h4><p>扫码把商品加入订单，再补充客户货号、件数、合计数量与客单价，历史订单可按客户和货号追溯。</p></article>
+            <article><span>04 · 交付</span><h4>生成两种文档</h4><p>面向客户导出带商品图的 Excel，面向厂家按固定模板生成 Word，各自只呈现对方真正需要的信息。</p></article>
+          </div>
+          <div className="decision-grid">
+            <div><p className="detail-label">业务细节</p><h4>同一价格，两种表达</h4><p>厂家价格按固定数字映射转成字母暗码，例如 <code>RJ.BO</code> 对应 <code>29.80</code>。系统不仅保存编码，还提供检查脚本识别历史错误，避免规则只存在于人的记忆里。</p></div>
+            <div><p className="detail-label">协作边界</p><h4>权限跟着责任走</h4><p>普通用户以查询为主，管理员维护商品、订单、厂家别名和客户价格；超级管理员再负责账号与二维码页面。删除商品和订单是独立权限，避免把高风险操作随角色一并放开。</p></div>
+            <div><p className="detail-label">现场适配</p><h4>电脑整理，手机扫码</h4><p>后台适合批量录入、Excel 导入和订单整理；手机扫码页缩短现场操作，只保留加入现有订单时真正需要的数量与价格字段。</p></div>
+            <div><p className="detail-label">运行方式</p><h4>从本地验证到线上经营</h4><p>开发时可用 JSON 文件快速验证，生产环境使用 RDS MySQL；商品图片可来自本地资源、OSS 或数据地址，导出不依赖某一台电脑的浏览器状态。</p></div>
+          </div>
+          <p className="product-boundary"><strong>产品边界：</strong>这是为特定经营流程持续打磨的私有系统，因此这里只展示产品逻辑，不公开客户数据、源码、账号、服务器或生产配置。</p>
         </div>
       </section>
 
@@ -164,15 +180,31 @@ function ProductsPage() {
           <div className="product-copy">
             <p className="product-kicker"><span>02</span> 编程 Agent · OPEN SOURCE</p><h2>Cagent</h2>
             <p className="product-lead">把编程 Agent 最重要的能力，放进一个干净、专注的工作界面。</p>
-            <p className="product-description">Cagent 基于 pi Agent SDK 构建，支持逐 token 流式输出、文件与命令工具、多个会话，以及可折叠的工具执行记录。前后端通过 WebSocket 保持实时反馈。</p>
+            <p className="product-description">Cagent 是 pi coding-agent runtime 的桌面工作台。用户选择项目和模型后，可以直接描述任务；Agent 在项目目录中读取、写入、编辑文件并运行命令，界面同步呈现思考、工具状态与最终结果。</p>
             <ul className="feature-list"><li><Zap size={18} /><span><strong>实时响应</strong>逐 token 展示 Agent 的输出</span></li><li><TerminalSquare size={18} /><span><strong>工具执行</strong>读取、编辑文件并运行命令</span></li><li><Code2 size={18} /><span><strong>会话管理</strong>在多个上下文间清楚切换</span></li></ul>
-            <div className="tech-line"><span>React 19</span><span>TypeScript</span><span>Express</span><span>WebSocket</span></div>
-            <a className="primary-action product-link" href={cagentUrl} target="_blank" rel="noreferrer">查看 GitHub <ExternalLink size={17} aria-hidden="true" /></a>
+            <div className="tech-line"><span>Electron</span><span>React 19</span><span>TypeScript</span><span>pi RPC</span></div>
+            <a className="primary-action product-link" href={cagentUrl} target="_blank" rel="noreferrer">查看源码与安装说明 <ExternalLink size={17} aria-hidden="true" /></a>
           </div>
+        </div>
+        <div className="page-shell product-deep-dive cagent-deep-dive">
+          <div className="narrative-heading"><p className="eyebrow">一次任务怎样推进</p><h3>对话只是入口，<br />项目变化才是结果。</h3><p>Cagent 面向想使用编程 Agent、又不希望长期停留在终端的人。界面负责把运行中的关键状态变得可见，同时把真正的 Agent 能力交给 pi runtime。</p></div>
+          <div className="workflow" aria-label="Cagent 工作流程">
+            <article><span>01 · 准备</span><h4>选择项目与模型</h4><p>以当前工作目录建立项目边界，连接已配置的 provider 和模型；凭据留在本机运行时中。</p></article>
+            <article><span>02 · 委托</span><h4>用自然语言描述任务</h4><p>发送需求后实时接收正文与独立思考内容，不必等完整响应结束才知道 Agent 正在做什么。</p></article>
+            <article><span>03 · 执行</span><h4>观察工具链</h4><p>读取、写入、编辑和命令执行按调用 ID 展示运行、部分输出、完成或失败，多个并发调用不会互相串线。</p></article>
+            <article><span>04 · 延续</span><h4>保留可恢复的上下文</h4><p>会话由 pi 持久化，可切换历史、压缩长上下文、从某条用户消息 Fork，或在当前叶节点 Clone。</p></article>
+          </div>
+          <div className="decision-grid">
+            <div><p className="detail-label">生成中控制</p><h4>任务进行时仍能纠偏</h4><p><code>Steer</code> 把新要求立即插入当前生成，<code>Follow-up</code> 等当前轮完成后继续处理；需要停止时可以中止生成，而不是只能等待。</p></div>
+            <div><p className="detail-label">上下文治理</p><h4>长任务不靠无限堆消息</h4><p>界面展示思考等级、消息数量和上下文状态，支持自动或手动压缩。会话树、Fork 与 Clone 让探索方案时保留原路径。</p></div>
+            <div><p className="detail-label">运行时能力</p><h4>不重新发明 Agent 内核</h4><p>pi 负责 provider、模型、工具、Skills、MCP、Extensions 与会话；Cagent 专注桌面交互、状态映射和错误恢复，让底层能力可以继续升级。</p></div>
+            <div><p className="detail-label">可靠反馈</p><h4>失败也要回到可操作状态</h4><p>模型网关失败、RPC 管道中断和工具错误都会落到明确状态；工具输出可折叠并限制超长内容，界面在异常后恢复输入，而不是卡在“生成中”。</p></div>
+          </div>
+          <p className="product-boundary"><strong>适用范围：</strong>Cagent 是本地桌面端编程工具，适合围绕一个项目持续工作；它不是云端代码托管平台，也不会替代模型服务本身。使用者仍需配置可用的模型 provider。</p>
         </div>
       </section>
 
-      <section className="closing-band"><div className="page-shell closing-layout"><p className="eyebrow">下一步</p><h2>产品会继续长，<br />介绍也会跟着更新。</h2><a className="text-action" href={profileUrl} target="_blank" rel="noreferrer">关注 GitHub 动态 <ArrowRight size={18} /></a></div></section>
+      <section className="closing-band"><div className="page-shell closing-layout"><p className="eyebrow">共同方法</p><h2>先理解工作，<br />再决定软件长什么样。</h2><a className="text-action" href={profileUrl} target="_blank" rel="noreferrer">了解构建者 <ArrowRight size={18} /></a></div></section>
     </main>
   )
 }

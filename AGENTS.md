@@ -14,6 +14,14 @@
 - 当前不使用后端、数据库、登录、CMS 或分析服务。
 - 生产环境部署在 `123.56.110.90:10000`，由 ECS 上的 Nginx 提供 `dist/` 静态文件和 SPA 路由回退。
 
+## 产品内容基线
+
+- 产品页必须让不访问 GitHub 的用户也能理解适用对象、业务问题、完整工作流、关键设计与能力边界；GitHub 只作为补充来源。
+- SiYan 的主流程是“商品建档 → 搜索或扫码 → 组成客户订单 → 导出客户 Excel 与厂家 Word”。前端为 Vue 3，后端为 Express，生产数据使用 RDS MySQL，本地可使用 JSON。
+- SiYan 的差异化业务规则包括多套商品货号、厂家价格暗码、分级角色与独立删除权限、电脑端资料整理和手机端扫码协同。
+- Cagent 是 pi coding-agent runtime 的 Electron 桌面工作台，主链路为 React GUI → Electron IPC → pi RPC；Express/WebSocket 仅是兼容路径，不能作为当前核心架构宣传。
+- Cagent 的核心价值是把项目选择、模型连接、文件与命令工具、持久化会话、Steer/Follow-up、上下文压缩、Fork/Clone 和错误恢复做成无需终端的可视工作流。
+
 ## 仓库地图
 
 | 路径 | 职责 |
