@@ -38,3 +38,13 @@ pnpm dev
 ## 项目说明
 
 长期协作规则、内容边界和验证要求见 [AGENTS.md](AGENTS.md)。项目目前是纯静态前端，不需要后端、数据库或环境变量。
+
+## 生产部署
+
+- 公网地址：`http://123.56.110.90:10000`
+- ECS 网站目录：`/var/www/personal-product-site`
+- Nginx 配置：`/etc/nginx/sites-available/personal-product-site`
+- Nginx 监听端口：`10000`
+- ECS 防火墙：UFW 已放行 `10000/tcp`
+
+发布新版本前运行 `pnpm lint` 和 `pnpm build`，再把 `dist/` 中的构建结果同步到网站目录。同步后依次运行 `nginx -t` 和 `systemctl reload nginx`，最后检查 `/` 与 `/products` 均返回 `200`。生产部署不要上传源码、密码或其他凭据。

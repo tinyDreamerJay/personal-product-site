@@ -12,6 +12,7 @@
 - SiYan 是私有业务系统，不链接私有仓库，不公开源码、账号、服务器、数据和环境变量。
 - Cagent 是公开项目，可以链接 `https://github.com/tinyDreamerJay/Cagent`。
 - 当前不使用后端、数据库、登录、CMS 或分析服务。
+- 生产环境部署在 `123.56.110.90:10000`，由 ECS 上的 Nginx 提供 `dist/` 静态文件和 SPA 路由回退。
 
 ## 仓库地图
 
@@ -21,6 +22,15 @@
 | `src/App.css` | 页面布局、组件样式和响应式规则 |
 | `src/index.css` | 全局 token、字体与基础样式 |
 | `README.md` | 面向开发者的项目入口和运行方式 |
+
+## 部署边界
+
+- ECS 网站目录：`/var/www/personal-product-site`。
+- Nginx 站点配置：`/etc/nginx/sites-available/personal-product-site`。
+- UFW 必须保留 `10000/tcp` 放行规则，否则阿里云安全组已开放时公网仍无法访问。
+- 发布前必须完成 `pnpm lint` 和 `pnpm build`，只部署 `dist/` 内容。
+- 修改 Nginx 配置后先运行 `nginx -t`，成功后才能执行 `systemctl reload nginx`。
+- 不得在仓库或文档中记录 ECS 密码、SSH 私钥或其他登录凭据。
 
 ## 修改约束
 
